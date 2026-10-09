@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"chat.tools.terminal.autoApprove": {
+			"C:\\Users\\lesma\\AppData\\Local\\Programs\\Python\\Python314\\python.exe": true,
+			"&": true
+		}
+	}
+}
