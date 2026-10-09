@@ -97,3 +97,203 @@ The actual execution status and coverage of these tests must be confirmed throug
 | Test ID | Scenario | Expected Result |
 |---|---|---|
 | TC-01 | Split a €100 expense equally | Each participant is assigned €50. |
+| TC-02 | Split a €100 expense using a 40/60 ratio | Contributions are €40 and €60. |
+| TC-03 | Enter percentages that do not total 100% | The application rejects the invalid split. |
+| TC-04 | Edit a shared expense | The balance is recalculated correctly, without duplicate accounting. |
+| TC-05 | Delete a transaction | Financial indicators and balances reflect the deletion. |
+| TC-06 | Reload the application | Data persists according to the implemented storage mechanism. |
+| TC-07 | Submit invalid amounts or form data | Appropriate validation messages are displayed. |
+| TC-08 | Process monetary amounts with cents | Calculations follow the defined rounding policy. |
+
+These are expected outcomes, not a claim that every scenario has already been executed or passed.
+
+---
+
+## 🛠️ Tech Stack
+
+### Development
+
+- React
+- JavaScript
+- Vite
+- CSS
+
+### Testing & Automation
+
+- Vitest
+- React Testing Library
+- Jest DOM
+- Python
+- Pytest
+- Playwright
+
+### Development Tools
+
+- **Antigravity:** AI-assisted development.
+- **Visual Studio Code:** Code review, execution, and debugging.
+- **Git & GitHub:** Version control and project documentation.
+
+### CI/CD
+
+The next automation goal is to integrate automated tests and production builds into **GitHub Actions**.
+
+CI integration is considered pending until a workflow has been configured and its execution verified.
+
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Node.js and npm.
+- Python and pip for E2E testing.
+- Chromium installed for Playwright.
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/lmes4/OneonOneFinapp.git
+cd OneonOneFinapp
+```
+
+### 2. Install JavaScript Dependencies
+
+```bash
+npm ci
+```
+
+### 3. Run the Development Server
+
+```bash
+npm run dev
+```
+
+Vite will display the local URL in the terminal. By default, it is usually:
+
+`http://localhost:5173/`
+
+### 4. Run Unit and Component Tests
+
+```bash
+npm test
+```
+
+To run tests in watch mode:
+
+```bash
+npm run test:watch
+```
+
+### 5. Run E2E Tests
+
+Install the Python dependencies required by the project and Playwright if they are not already available.
+
+```bash
+python -m pip install pytest playwright
+python -m playwright install chromium
+```
+
+Start the application in one terminal:
+
+```bash
+npm run dev
+```
+
+Then, in a second terminal, run the E2E suite from the repository root:
+
+```bash
+npm run test:e2e
+```
+
+**Note:** The development server must be running at the URL expected by the E2E configuration. The `test:e2e` script does not necessarily start the server automatically.
+
+If the project includes a Python dependency file, use it to install the pinned dependencies for a reproducible environment.
+
+### 6. Build for Production
+
+```bash
+npm run build
+```
+
+To preview the production build:
+
+```bash
+npm run preview
+```
+
+---
+
+## 📂 Project Structure
+
+The following structure summarizes the main modules currently identified. Update it if the actual directory layout differs.
+
+```text
+OneonOneFinapp/
+├── src/
+│   ├── App.jsx
+│   ├── FinAppContext.jsx
+│   ├── DashboardView.jsx
+│   ├── GastosView.jsx
+│   ├── MetasView.jsx
+│   ├── FinancialCharts.jsx
+│   └── ...
+├── tests_e2e/
+│   ├── conftest.py
+│   └── test_finapp_shared.py
+├── package.json
+├── package-lock.json
+├── vite.config.js
+├── index.html
+└── README.md
+```
+
+Unit tests and business logic modules may be located in additional directories, depending on the current implementation.
+
+---
+
+## 🛡️ Quality, Risks & Limitations
+
+The project considers common risks in financial applications:
+
+- Monetary precision and rounding errors.
+- Invalid expense-splitting percentages.
+- Incorrect balances after editing or deleting transactions.
+- Data loss after reloading the application.
+- Inconsistencies between transactions and dashboard indicators.
+- Usability and responsive design issues.
+- Unauthorized access to personal information if multi-user features are introduced.
+
+This is a demonstration project. It should not be considered production-ready financial software without appropriate security, privacy, architecture, and reliability assessments.
+
+---
+
+## 🗺️ Roadmap
+
+- [x] Initial React + Vite application structure.
+- [x] Introduction of unit testing tools.
+- [x] Preparation of automated E2E scenarios.
+- [ ] Verify all unit tests.
+- [ ] Validate all E2E user flows.
+- [ ] Expand edge-case coverage for expense splitting and settlements.
+- [ ] Document actual defects and test results.
+- [ ] Configure GitHub Actions CI/CD.
+- [ ] Publish an accessible live demo.
+- [ ] Add screenshots and portfolio documentation.
+
+**Checklist items should only be marked as completed once the corresponding work has been verified.**
+
+---
+
+## 👩‍💻 About This Project
+
+One on One FinApp is part of my independent learning journey in **Software Testing and QA Automation**.
+
+My goal is to combine AI-assisted development with a quality-focused mindset: understanding requirements, anticipating risks, defining expected outcomes, designing test scenarios, and verifying the actual behavior of the software.
+
+Because generating code is only one part of the process. Understanding what can fail and verifying that a solution meets its requirements are equally important.
+
+**Repository:** [github.com/lmes4/OneonOneFinapp](https://github.com/lmes4/OneonOneFinapp)
+
+---
+
+*Project under development. Features, tools, and testing results should be interpreted according to the actual state of each published version.*
