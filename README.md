@@ -2,6 +2,10 @@
 
 ### Shared finances, clearer decisions.
 
+🚀 **[Try the app](https://oneononeapp.example.com)** — Explore the app in its current development state.
+
+📋 **[User stories & E2E results](#user-stories-implementation-and-e2e-results)** — Quick summary of implemented stories and verified flows.
+
 **One on One FinApp** is a personal finance and shared expenses web application developed as an independent project with the support of AI-powered development tools.
 
 The project explores how to manage shared expenses in a flexible and transparent way, adapting to different financial situations and expense-splitting methods.
@@ -90,7 +94,27 @@ The E2E test suite covers scenarios involving:
 - Savings goals.
 - Navigation and responsive behavior.
 
-The actual execution status and coverage of these tests must be confirmed through local test runs.
+Latest local E2E run: **11 of 11 scenarios passed** with Pytest and Playwright.
+
+During verification, the savings-goal contribution scenario exposed that contribution details were updated in state but not displayed on the goal card. The UI was corrected to show this information, and the full E2E suite passed on rerun.
+
+## 📋 User Stories, Implementation & E2E Results
+
+This table summarizes the user-facing behaviors currently implemented and their latest automated E2E verification. **PASS** means the scenario passed in the latest local run; it does not imply broader production or security validation.
+
+| ID | User story | Implemented behavior | E2E verification | Result |
+|---|---|---|---|---|
+| US-01 | As a user, I want to open the dashboard and see key financial information. | Dashboard displays the available balance and settlement summary. | `test_01_load_application` | PASS |
+| US-02 | As a user, I want to record a personal expense. | Personal expenses can be saved and shown in recent movements. | `test_02_register_personal_expense` | PASS |
+| US-03 | As a user, I want to split a shared expense equally. | A shared expense can be saved with a 50/50 split preview. | `test_03_create_shared_expense_5050` | PASS |
+| US-04 | As a user, I want to split a shared expense proportionally. | A shared expense can be saved using the proportional split option. | `test_04_create_shared_expense_proportional` | PASS |
+| US-05 | As a user, I want to save a shared expense with a custom split. | The custom split option can be selected and the expense saved with its current default split. | `test_05_custom_split_validation` | PASS |
+| US-06 | As a user, I want invalid zero-value expenses to be rejected. | Submitting an expense with a zero amount shows a validation message. | `test_06_form_validation_zero_amount` | PASS |
+| US-07 | As a user, I want my expenses to remain available after reloading the app. | A newly saved expense remains visible after a page reload. | `test_07_persistence_after_page_reload` | PASS |
+| US-08 | As a user, I want to delete a movement after confirming the action. | Deletion requires confirmation and displays a success message. | `test_08_delete_movement_with_confirmation` | PASS |
+| US-09 | As a user, I want to contribute money to a savings goal and see the updated contribution. | Contributing updates the goal and displays the contribution information. | `test_09_savings_goals_interaction` | PASS |
+| US-10 | As a user, I want to see settlement information on the dashboard. | The settlement card is visible on the dashboard. | `test_10_settlement_on_dashboard` | PASS |
+| US-11 | As a mobile user, I want to navigate the main sections on a small screen. | Bottom navigation opens Dashboard, Expenses, and Goals on a mobile viewport. | `test_11_mobile_viewport_and_bottom_nav` | PASS |
 
 ### 🔍 Example Test Scenarios
 
@@ -272,10 +296,10 @@ This is a demonstration project. It should not be considered production-ready fi
 - [x] Initial React + Vite application structure.
 - [x] Introduction of unit testing tools.
 - [x] Preparation of automated E2E scenarios.
-- [ ] Verify all unit tests.
-- [ ] Validate all E2E user flows.
+- [x] Verify all unit tests (35 tests passed across 6 files with Vitest).
+- [x] Validate all E2E user flows (11 scenarios passed with Pytest and Playwright).
 - [ ] Expand edge-case coverage for expense splitting and settlements.
-- [ ] Document actual defects and test results.
+- [x] Document actual defects and test results (including the savings-goal display issue found and fixed during E2E verification).
 - [ ] Configure GitHub Actions CI/CD.
 - [ ] Publish an accessible live demo.
 - [ ] Add screenshots and portfolio documentation.

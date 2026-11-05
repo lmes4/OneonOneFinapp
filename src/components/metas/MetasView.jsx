@@ -304,6 +304,7 @@ export default function MetasView({ isMobile = false }) {
                     {pct >= 100 ? '🎉 ¡Meta cumplida!' : `Faltan ${formatMoney(remaining)}`}
                   </span>
                 </div>
+                <p className="text-xs text-slate-500">{goal.contributionInfo}</p>
 
                 {/* Action Button: Aportar Dinero */}
                 <button
